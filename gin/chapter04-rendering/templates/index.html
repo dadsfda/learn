@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; }
+        h1 { color: #333; }
+        .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>{{ .title }}</h1>
+    <div class="card">
+        <p>你好, <strong>{{ .name }}</strong>!</p>
+        <p>这是 Gin 模板渲染的示例页面。</p>
+    </div>
+</body>
+</html>

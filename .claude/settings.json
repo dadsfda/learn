@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebSearch",
+      "WebFetch(domain:www.cloudwego.io)",
+      "Bash(ls \"E:\\\\aiproject\\\\learn\\\\\" | head -20)",
+      "Read(//e/aiproject/**)",
+      "Bash(dir \"E:\\\\aiproject\\\\learn\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "PowerShell(if \\(!\\(Test-Path \"E:\\\\aiproject\\\\learn\\\\chapter03-memory-session\"\\)\\) { New-Item -ItemType Directory -Path \"E:\\\\aiproject\\\\learn\\\\chapter03-memory-session\" -Force })",
+      "Bash(go mod *)",
+      "Bash(go build *)",
+      "Bash(go vet *)",
+      "Bash(go run *)",
+      "Bash(gh api *)",
+      "Bash(dir \"E:\\\\aiproject\\\\learn\\\\chapter11-turnloop\")",
+      "Bash(grep -E \"\\\\.\\(go|md|html|mod\\)$|chapter10-a2ui-protocol/:\")"
+    ]
+  }
+}
