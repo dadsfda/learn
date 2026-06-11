@@ -52,12 +52,13 @@ func main() {
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"title": "Gin 学习",
-			"name":  "张三",
+			"name":  "张四",
 		})
 	})
 
 	// 7. 静态文件服务
 	r.Static("/static", "./static")
+	r.StaticFile("/favicon.ico", "./static/favicon.ico")
 
 	// 8. 文件下载
 	r.GET("/download", func(c *gin.Context) {

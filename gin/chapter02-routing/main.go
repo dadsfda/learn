@@ -60,21 +60,21 @@ func main() {
 	api := r.Group("/api/v1")
 	{
 		// 用户组
-		users := api.Group("/users")
+		userGroup := api.Group("/users")
 		{
-			users.GET("/", func(c *gin.Context) {
+			userGroup.GET("/get", func(c *gin.Context) {
 				c.JSON(200, users)
 			})
-			users.POST("/", func(c *gin.Context) {
+			userGroup.POST("/post", func(c *gin.Context) {
 				name := c.PostForm("name")
 				c.JSON(201, gin.H{"message": "用户已创建", "name": name})
 			})
 		}
 
 		// 文章组
-		articles := api.Group("/articles")
+		articleGroup  := api.Group("/articles")
 		{
-			articles.GET("/", func(c *gin.Context) {
+			articleGroup .GET("/", func(c *gin.Context) {
 				c.JSON(200, gin.H{"articles": []string{"文章1", "文章2"}})
 			})
 		}

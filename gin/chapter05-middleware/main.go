@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -82,12 +84,16 @@ func Timer() gin.HandlerFunc {
 }
 
 func main() {
+	f, _ := os.Create("gin.log")
+	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
+	
 	r := gin.New()
 
 	// 全局中间件
-	r.Use(gin.Recovery()) // 恢复 panic
-	r.Use(CORS())         // 跨域
-	r.Use(Timer())        // 耗时统计
+	r.Use(gin.Recovery())  // 恢复 panic
+	r.Use(RequestLogger()) // 请求日志
+	r.Use(CORS())          // 跨域
+	r.Use(Timer())         // 耗时统计
 
 	// 公开路由（不需要认证）
 	public := r.Group("/api")
@@ -122,6 +128,6 @@ func main() {
 
 	fmt.Println("服务器启动在 http://localhost:8080")
 	fmt.Println("测试认证:")
-	fmt.Println('  curl http://localhost:8080/api/profile -H "Authorization: Bearer my-secret-token"')
+	fmt.Println("  curl http://localhost:8080/api/profile -H \"Authorization: Bearer my-secret-token\"")
 	r.Run()
 }

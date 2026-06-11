@@ -19,7 +19,7 @@ func main() {
 
 	// 返回纯文本
 	r.GET("/hello", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello, Gin!")
+		c.String(http.StatusOK, "Hello, World!")
 	})
 
 	// 启动服务器，默认监听 :8080
